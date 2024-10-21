@@ -76,4 +76,66 @@ You can see all menu items by clicking ALL button, and items in particular categ
 * When you log in, the system automaticaly set start working time.
 * Clock out button will set finish working time of the person currently logged in.
 * Manager can make staff clocked out via manage employees, by selecting staff and clicking Clock out button.
-* You can see a payment details for a day by clicking "Show payment" button on the left 
+* You can see a payment details for a day by clicking "Show payment" button on the left
+
+
+
+
+
+### Functions
+code example in Delete an item in Order.
+This project includes functions for managing orders, including deleting items from an order.
+
+## How to Use the Function
+
+To remove an item from an order, you can use the following method:
+
+```java
+// Delete item from order
+public boolean deleteOrderItem(int orderID, int index) {
+    Order rOrder = findOrderByID(orderID); // Find order by ID
+    if (rOrder == null) return false; // Check if order exists
+    return rOrder.deleteItem(index); // Delete item from order
+}
+```
+
+## API Documentation for `deleteOrderItem`
+
+### Overview
+The `deleteOrderItem` method is part of the Order Management System and allows users to remove an item from a specific order based on the order ID and the index of the item.
+
+### Endpoint
+- **Method**: DELETE
+- **URL**: `/orders/{orderID}/items/{index}`
+
+### Parameters
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `orderID` | int  | The unique identifier of the order. |
+| `index`   | int  | The index of the item in the order to be deleted. |
+
+### Request Example
+To delete an item from an order, you would make a request like this:
+
+This request attempts to delete the item at index 0 from the order with ID 123.
+
+### Response
+
+#### Success Response
+- **Code**: 200 OK
+- **Content**:
+```json
+{
+    "success": true,
+    "message": "Item deleted successfully."
+}
+```
+#### Erorr Response
+- **Code**: 404 Not Found
+- **Content**:
+```json
+{
+    "success": false,
+    "message": "Order not found."
+}
