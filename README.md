@@ -139,3 +139,50 @@ This request attempts to delete the item at index 0 from the order with ID 123.
     "success": false,
     "message": "Order not found."
 }
+```
+
+# Menu Item Initialization API
+
+## Overview
+The `init` method is responsible for initializing a menu item in the application. It sets up the fields for a new menu item when the `menuItemID` is `0`. This method ensures that all relevant fields are cleared and set to default values.
+
+## Method Signature
+```java
+
+public void init(int menuItemID) {
+    // Check if the menuItemID is 0, indicating a new menu item creation
+    if (menuItemID == 0) {
+        // Reset the menu ID to an empty string
+        setMenuID("");
+        
+        // Enable editing for the menu item ID textbox
+        tbMenuItemID.setEditable(true);
+        
+        // Clear the item name field
+        setItemName("");
+        
+        // Clear the price field
+        setPrice("");
+        
+        // Set the default type of the menu item to "Main"
+        setType("Main");
+        
+        // Indicate that this is not an update operation
+        isUpdate = false;
+        
+        // Exit the method as the initialization is complete
+        return;
+    }
+    // Additional logic for handling existing menu items would go here
+}
+```
+### Parameters
+#### menuItemID (int): The ID of the menu item. If this value is 0, it indicates the creation of a new menu item.
+#### Behavior
+If menuItemID is 0:
+The method clears the current menu ID.
+It enables editing for the menu item ID textbox.
+It resets the item name and price to empty strings.
+It sets the item type to "Main" by default.
+It sets the isUpdate flag to false, indicating that this is not an update operation.
+If menuItemID is not 0, additional logic for handling existing items should be implemented (not shown in the current code).
