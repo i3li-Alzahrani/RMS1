@@ -176,13 +176,29 @@ public void init(int menuItemID) {
     // Additional logic for handling existing menu items would go here
 }
 ```
+
+### Endpoint
+- **Method**: ADD
+- **POST**: /menu/items/init
+
+### Description
+This endpoint initializes the parameters for a menu item. If the menuItemID is 0, it sets up a new menu item. Otherwise, it prepares an existing menu item for editing.
+
 ### Parameters
-#### menuItemID (int): The ID of the menu item. If this value is 0, it indicates the creation of a new menu item.
-#### Behavior
-If menuItemID is 0:
-The method clears the current menu ID.
-It enables editing for the menu item ID textbox.
-It resets the item name and price to empty strings.
-It sets the item type to "Main" by default.
-It sets the isUpdate flag to false, indicating that this is not an update operation.
-If menuItemID is not 0, additional logic for handling existing items should be implemented (not shown in the current code).
+
+- *Query Parameters:*
+  - menuItemID (int): The unique identifier for the menu item. A value of 0 indicates the creation of a new menu item.
+
+### Request Example
+```http
+POST /menu/items/init?menuItemID=0
+
+  "message": "Menu item initialized successfully."
+  "menuItem": {
+    "menuID": "",
+    "itemName": "",
+    "price": "",
+    "type": "Main",
+    "isUpdate": false
+  }
+
